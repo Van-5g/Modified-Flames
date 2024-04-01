@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modified FLAMES</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>FLAMES</h1>
+  <label for="name1">Enter Name 1: </label>
+  <input type="text" id="name1"><br><br>
+  <label for="name2">Enter Name 2: </label>
+  <input type="text" id="name2"><br><br>
+  <button onclick="flames()">Check Relationship</button><br><br>
+  <h3 id="name"></h3>
+  <h3 id="result"></h3>
+
+  <script>
+    function flames() {
+      var name1 = document.getElementById('name1').value.toUpperCase().replace(/[^A-Z]/g, '');
+      var name2 = document.getElementById('name2').value.toUpperCase().replace(/[^A-Z]/g, '');
+      
+      document.getElementById('name').textContent = "Names: " + name1 + " & " + name2;
+      
+      var tchar = (name1 + name2).length;
+      var flames = "FLAMES";
+      var flamesC = flames.length;
+      
+      var index = (tchar % flamesC) - 1;
+      if (index == -1) {
+        index = flamesC - 1;
+      }
+      
+      var result;
+      switch (flames[index]) {
+        case 'F':
+          result = "Friends";
+          break;
+        case 'L':
+          result = "Lovers";
+          break;
+        case 'A':
+          result = "Acquaintances";
+          break;
+        case 'M':
+          result = "Marriage";
+          break;
+        case 'E':
+          result = "Enemies";
+          break;
+        case 'S':
+          result = "Sweethearts";
+          break;
+      }
+      
+      document.getElementById('result').textContent = "Relationship: " + result;
+    }
+  </script>
+</body>
+</html>
